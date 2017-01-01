@@ -1,0 +1,11 @@
+apply plugin: 'java'
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+    compile 'org.slf4j:slf4j-api:1.7.18'
+    compile group: 'nu.pattern', name: 'opencv', version: '2.4.9-4'
+    testCompile 'junit:junit:4.12'
+}

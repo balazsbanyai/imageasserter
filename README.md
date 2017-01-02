@@ -17,12 +17,6 @@ assertSimilarity("path_to_file1.jpg", "path_to_file2.jpg", 0.9) // Custom tresho
 
 # maven
 The artifact is not yet published to jcenter nor mavenCentral, so an additional repo has to be added to your project:
-```groovy
-maven {
-    url  "http://dl.bintray.com/balazsbanyai/imageasserter"
-}
-```
-
 
 ```groovy
 compile 'com.banyaibalazs.imageasserter:imageasserter:1.0.0'

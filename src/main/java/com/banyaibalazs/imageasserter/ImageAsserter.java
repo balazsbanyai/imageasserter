@@ -1,3 +1,5 @@
+package com.banyaibalazs.imageasserter;
+
 import org.opencv.core.Core;
 import org.opencv.core.Mat;
 import org.opencv.core.MatOfFloat;
@@ -5,7 +7,6 @@ import org.opencv.core.MatOfInt;
 import org.opencv.highgui.Highgui;
 import org.opencv.imgproc.Imgproc;
 
-import java.io.File;
 import java.util.ArrayList;
 
 import static org.opencv.imgproc.Imgproc.*;
@@ -15,17 +16,17 @@ import static org.opencv.imgproc.Imgproc.*;
  */
 public class ImageAsserter {
 
-    static final float DEFAULT_TRESHOLD = .7f;
+    static final float DEFAULT_TRESHOLD = .85f;
 
     static {
         nu.pattern.OpenCV.loadLibrary();
     }
 
-    public static boolean assertSimilarity(String path1, String path2) {
-        return assertSimilarity(path1, path2, DEFAULT_TRESHOLD);
+    public static void assertSimilarity(String path1, String path2) {
+        assertSimilarity(path1, path2, DEFAULT_TRESHOLD);
     }
 
-    public static boolean assertSimilarity(String path1, String path2, float treshold) {
+    public static void assertSimilarity(String path1, String path2, float treshold) {
 
         Mat im1 = Highgui.imread(path1);
         Mat im2 = Highgui.imread(path2);
@@ -88,19 +89,9 @@ public class ImageAsserter {
 
         double correlation = Imgproc.compareHist(histRef, histSource, CV_COMP_CORREL);
 
-        System.out.println(correlation);
-
-        return correlation > treshold;
+        if (correlation < treshold) {
+            throw new AssertionError(String.format("Image similarity %1$,.2f was below the treshold %2$,.2f", correlation, treshold));
+        }
     }
-
-    public static String getResourcePath(String name){
-        File file = new File(ImageAsserter.class.getClassLoader().getResource(name).getFile());
-        return file.getAbsolutePath();
-    }
-
-    public static void main(String[] args) {
-        assertSimilarity(getResourcePath("MobileAppEM.jpg"), getResourcePath("WebConsoleEM.jpg"));
-    }
-
 
 }

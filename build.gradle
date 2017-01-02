@@ -15,9 +15,20 @@ publishing {
         mavenJava(MavenPublication) {
             groupId 'com.banyaibalazs.imageasserter'
             artifactId 'imageasserter'
-            version '1.0.0'
+            version '1.0.1'
 
             from components.java
+        }
+    }
+
+    repositories {
+        maven {
+            name 'bintray'
+            url "https://api.bintray.com/maven/balazsbanyai/imageasserter/imageasserter/;publish=1"
+            credentials {
+                username System.getenv('BINTRAY_USER')
+                password System.getenv('BINTRAY_KEY')
+            }
         }
     }
 }

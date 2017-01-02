@@ -1,11 +1,23 @@
 apply plugin: 'java'
+apply plugin: 'maven-publish'
 
 repositories {
     jcenter()
 }
 
 dependencies {
-    compile 'org.slf4j:slf4j-api:1.7.18'
     compile group: 'nu.pattern', name: 'opencv', version: '2.4.9-4'
     testCompile 'junit:junit:4.12'
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            groupId 'com.banyaibalazs.imageasserter'
+            artifactId 'imageasserter'
+            version '1.0.0'
+
+            from components.java
+        }
+    }
 }

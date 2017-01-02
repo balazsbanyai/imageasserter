@@ -1,6 +1,5 @@
 package com.banyaibalazs.imageasserter;
 
-import junit.framework.AssertionFailedError;
 import org.junit.Test;
 
 import java.io.File;

@@ -3,6 +3,8 @@ This is a test utility which intended to help to assert whether 2 images are sim
 
 # health
 [![Build Status](https://travis-ci.org/balazsbanyai/imageasserter.svg?branch=master)](https://travis-ci.org/balazsbanyai/imageasserter)
+[![Code Coverage](https://img.shields.io/codecov/c/github/balazsbanyai/imageasserter/master.svg)](https://codecov.io/github/balazsbanyai/imageasserter?branch=master)
+
 
 # usage
 ```java

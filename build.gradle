@@ -16,7 +16,7 @@ publishing {
         mavenJava(MavenPublication) {
             groupId 'com.banyaibalazs.imageasserter'
             artifactId 'imageasserter'
-            version '1.0.1'
+            version '2.0.0'
 
             from components.java
         }

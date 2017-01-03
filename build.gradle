@@ -1,5 +1,6 @@
 apply plugin: 'java'
 apply plugin: 'maven-publish'
+apply plugin: 'jacoco'
 
 repositories {
     jcenter()
@@ -15,7 +16,7 @@ publishing {
         mavenJava(MavenPublication) {
             groupId 'com.banyaibalazs.imageasserter'
             artifactId 'imageasserter'
-            version '1.0.1'
+            version '2.0.0'
 
             from components.java
         }
@@ -32,3 +33,12 @@ publishing {
         }
     }
 }
+
+jacocoTestReport {
+    reports {
+        xml.enabled = true
+        html.enabled = true
+    }
+}
+
+check.dependsOn jacocoTestReport

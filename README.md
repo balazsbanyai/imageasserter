@@ -14,7 +14,7 @@ This is a test utility which intended to help to assert whether 2 images are sim
 new ImageAsserter()
     .with(new HistogramSimilarityAssertion()) // Default treshold
     .with(new FeatureSimilarityAssertion(.5f)) // Custom treshold
-    .assertSimilarity(getResourcePath("path_to_file1.jpg"), getResourcePath("path_to_file2.jpg"));
+    .assertSimilarity("path_to_file1.jpg", "path_to_file2.jpg");
 
 ```
 

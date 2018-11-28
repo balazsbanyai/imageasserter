@@ -10,18 +10,16 @@ This is a test utility which intended to help to assert whether 2 images are sim
 ```java
 
 ...
-
-new ImageAsserter()
-    .with(new HistogramSimilarityAssertion()) // Default treshold
-    .with(new FeatureSimilarityAssertion(.5f)) // Custom treshold
-    .assertSimilarity("path_to_file1.jpg", "path_to_file2.jpg");
+assertThat(imageFromResource("one.jpg"), similarityTo(imageFromResource("another.jpg"))
+    .inHistogram(greaterThan(.7))
+    .inFeatures(greaterThan(.3)));
 
 ```
 
 # maven
 
 ```groovy
-compile 'com.banyaibalazs.imageasserter:imageasserter:2.0.0'
+compile 'com.banyaibalazs.imageasserter:imageasserter:3.0.0'
 ```
 
 # license

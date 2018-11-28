@@ -1,5 +1,9 @@
 package com.banyaibalazs.imageasserter;
 
+/**
+ * Please use the {@link ImageSimilarityMatcher} Hamcrest matcher instead.
+ * */
+@Deprecated
 public class HistogramSimilarityAssertion extends ImageSimilarityAssertion {
 
     private static final double DEFAULT_TRESHOLD = .7f;

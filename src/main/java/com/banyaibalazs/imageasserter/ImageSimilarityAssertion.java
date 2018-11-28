@@ -8,6 +8,10 @@ import java.text.DecimalFormat;
 
 import static org.opencv.imgproc.Imgproc.resize;
 
+/**
+ * Please use the {@link ImageSimilarityMatcher} Hamcrest matcher instead.
+ * */
+@Deprecated
 public abstract class ImageSimilarityAssertion {
 
     private final double treshold;

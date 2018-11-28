@@ -3,6 +3,10 @@ package com.banyaibalazs.imageasserter;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Please use the {@link ImageSimilarityMatcher} Hamcrest matcher instead.
+ * */
+@Deprecated
 public class ImageAsserter {
 
     static {

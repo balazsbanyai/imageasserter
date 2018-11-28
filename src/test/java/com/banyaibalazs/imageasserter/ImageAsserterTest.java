@@ -1,57 +1,49 @@
 package com.banyaibalazs.imageasserter;
 
-import org.junit.Test;
+
+import org.junit.jupiter.api.Test;
 
 import java.io.File;
 
-import static junit.framework.TestCase.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public class ImageAsserterTest {
+class ImageAsserterTest {
 
     @Test
-    public void similarity_similarEmulatorImages_assertionSuccess() {
+    void similarity_similarEmulatorImages_assertionSuccess() {
         new ImageAsserter()
                 .with(new HistogramSimilarityAssertion())
                 .with(new FeatureSimilarityAssertion())
-                .assertSimilarity(getResourcePath("MobileAppEM.jpg"), getResourcePath("WebConsoleEM.jpg"));
+                .assertSimilarity(getResourcePath("MobileAppEmulatorCamera.jpg"), getResourcePath("WebConsoleEmulatorCamera.jpg"));
     }
 
     @Test
-    public void similarity_similarCameraImages_assertionSuccess() {
+    void similarity_similarCameraImages_assertionSuccess() {
+
         new ImageAsserter()
                 .with(new HistogramSimilarityAssertion())
                 .with(new FeatureSimilarityAssertion())
-                .assertSimilarity(getResourcePath("MobileAppCam.jpg"), getResourcePath("WebConsoleCam.jpg"));
+                .assertSimilarity(getResourcePath("MobileAppRealCamera.jpg"), getResourcePath("WebConsoleRealCamera.jpg"));
     }
 
     @Test
-    public void similarity_cameraImageVsEmulatorImage_assertionFails() {
-        boolean fail = false;
-        try {
-            new ImageAsserter()
-                    .with(new HistogramSimilarityAssertion())
-                    .with(new FeatureSimilarityAssertion())
-                    .assertSimilarity(getResourcePath("MobileAppEM.jpg"), getResourcePath("WebConsoleCam.jpg"));
-            fail = true;
-        } catch (AssertionError e) {
+    void similarity_cameraImageVsEmulatorImage_assertionFails() {
+        Runnable action = () -> new ImageAsserter()
+                .with(new HistogramSimilarityAssertion())
+                .with(new FeatureSimilarityAssertion())
+                .assertSimilarity(getResourcePath("MobileAppEmulatorCamera.jpg"), getResourcePath("WebConsoleRealCamera.jpg"));
 
-        }
-        assertFalse("this method should have thrown assertionFailedError", fail);
+        assertThrows(AssertionError.class, action::run);
     }
 
     @Test
-    public void similarity_emulatorImageVsBlankImage_assertionFails() {
-        boolean fail = false;
-        try {
-            new ImageAsserter()
-                    .with(new HistogramSimilarityAssertion())
-                    .with(new FeatureSimilarityAssertion())
-                    .assertSimilarity(getResourcePath("MobileAppBad.png"), getResourcePath("WebConsoleBad.png"));
-            fail = true;
-        } catch (AssertionError e) {
+    void similarity_emulatorImageVsBlankImage_assertionFails() {
+        Runnable action = () -> new ImageAsserter()
+                .with(new HistogramSimilarityAssertion())
+                .with(new FeatureSimilarityAssertion())
+                .assertSimilarity(getResourcePath("MobileAppBad.png"), getResourcePath("WebConsoleBad.png"));
 
-        }
-        assertFalse("this method should have thrown assertionFailedError", fail);
+        assertThrows(AssertionError.class, action::run);
     }
 
     private static String getResourcePath(String name){

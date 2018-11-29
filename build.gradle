@@ -19,6 +19,17 @@ test {
     useJUnitPlatform()
 }
 
+
+task sourceJar(type: Jar) {
+    classifier = 'sources'
+    from sourceSets.main.allJava
+}
+
+task packageJavadoc(type: Jar) {
+    from javadoc
+    classifier = 'javadoc'
+}
+
 publishing {
     publications {
         mavenJava(MavenPublication) {
@@ -27,6 +38,8 @@ publishing {
             version '2.0.0'
 
             from components.java
+            artifact sourceJar
+            artifact packageJavadoc
         }
     }
 
@@ -41,6 +54,18 @@ publishing {
         }
     }
 }
+
+javadoc {
+    source = sourceSets.main.allJava
+    classpath = configurations.compileClasspath
+    options {
+        setMemberLevel JavadocMemberLevel.PUBLIC
+        setAuthor false
+
+        links "https://docs.oracle.com/javase/8/docs/api/"
+    }
+}
+
 
 jacocoTestReport {
     reports {

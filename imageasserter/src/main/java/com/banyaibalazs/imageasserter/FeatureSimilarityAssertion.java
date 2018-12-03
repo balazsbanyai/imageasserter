@@ -1,9 +1,9 @@
 package com.banyaibalazs.imageasserter;
 
 /**
- * Please use the {@link ImageSimilarityMatcher} Hamcrest matcher instead.
+ * Provides an assertion that is based on the similarity between "good" edges and corners of images.
+ * This matcher is not orientation-aware.
  * */
-@Deprecated
 public class FeatureSimilarityAssertion extends ImageSimilarityAssertion {
 
     private static final double DEFAULT_TRESHOLD = .3f;

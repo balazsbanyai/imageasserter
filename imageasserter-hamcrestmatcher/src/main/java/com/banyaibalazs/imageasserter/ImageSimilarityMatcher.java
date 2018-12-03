@@ -18,13 +18,16 @@ public interface ImageSimilarityMatcher extends Matcher<MatchableImage> {
 
     /**
      * Configures this matcher to compare the histograms of the images,
-     * and match their similarity using the given matcher.
+     * and match their similarity using the given matcher. The histogram
+     * is based on the number of pixels for each tonal value. This
+     * assertion does not check the alignment, only the sum of pixels.
      * */
     ImageSimilarityMatcher inHistogram(Matcher<Double> matcher);
 
     /**
-     * Configures this matcher to compare the features of the images,
-     * and match their similarity using the given matcher.
+     * Configures this matcher to compare the similarity between "good"
+     * edges and corners of images and match their similarity using
+     * the given matcher. This matcher is not orientation-aware.
      * */
     ImageSimilarityMatcher inFeatures(Matcher<Double> matcher);
 }

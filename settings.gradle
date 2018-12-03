@@ -1,1 +1,2 @@
-rootProject.name = 'ImageAsserter'
+include 'imageasserter'
+include 'imageasserter-hamcrestmatcher'

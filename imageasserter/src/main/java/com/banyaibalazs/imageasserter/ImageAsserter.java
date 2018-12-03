@@ -4,16 +4,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Please use the {@link ImageSimilarityMatcher} Hamcrest matcher instead.
+ * Utility that can detect image similarity with the given comparison method.
  * */
-@Deprecated
 public class ImageAsserter {
 
     static {
         nu.pattern.OpenCV.loadLibrary();
     }
 
-    List<ImageSimilarityAssertion> assertions = new ArrayList<>();
+    private List<ImageSimilarityAssertion> assertions = new ArrayList<>();
 
     public ImageAsserter with(ImageSimilarityAssertion assertion) {
         assertions.add(assertion);

@@ -9,4 +9,6 @@
 .idea/**
 **.iml
 */.iml
-/out
+out/**
+*/out
+**.class

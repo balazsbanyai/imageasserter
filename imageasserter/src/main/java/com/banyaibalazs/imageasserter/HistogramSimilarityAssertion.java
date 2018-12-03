@@ -1,9 +1,9 @@
 package com.banyaibalazs.imageasserter;
 
 /**
- * Please use the {@link ImageSimilarityMatcher} Hamcrest matcher instead.
+ * Provides an assertion that is based on the similarity between the number of pixels for each tonal value.
+ * This assertion does not check the alignment, only the sum of pixels.
  * */
-@Deprecated
 public class HistogramSimilarityAssertion extends ImageSimilarityAssertion {
 
     private static final double DEFAULT_TRESHOLD = .7f;

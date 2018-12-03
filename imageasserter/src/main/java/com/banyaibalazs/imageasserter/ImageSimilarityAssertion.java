@@ -9,9 +9,8 @@ import java.text.DecimalFormat;
 import static org.opencv.imgproc.Imgproc.resize;
 
 /**
- * Please use the {@link ImageSimilarityMatcher} Hamcrest matcher instead.
+ * Utility that can detect image similarity with the given comparison method.
  * */
-@Deprecated
 public abstract class ImageSimilarityAssertion {
 
     private final double treshold;

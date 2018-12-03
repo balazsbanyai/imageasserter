@@ -1,0 +1,8 @@
+dependencies {
+    implementation project(':imageasserter')
+    implementation hamcrest
+    implementation opencv
+
+    testImplementation junitApi
+    testRuntime junitEngine
+}
